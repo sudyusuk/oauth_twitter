@@ -86,14 +86,14 @@ func Callback(w http.ResponseWriter, req *http.Request) {
 	http.Redirect(w, req, "http://127.0.0.1:8080/redirect", http.StatusFound)
 }
 
-func GetConnect(tempCredKey string, tokenCredKey string) *oauth.Client {
+func GetConnect(consumer_key string, consumer_secret string) *oauth.Client {
 	return &oauth.Client{
 		TemporaryCredentialRequestURI: "https://api.twitter.com/oauth/request_token",
 		ResourceOwnerAuthorizationURI: "https://api.twitter.com/oauth/authorize",
 		TokenRequestURI:               "https://api.twitter.com/oauth/access_token",
 		Credentials: oauth.Credentials{
-			Token:  tempCredKey,
-			Secret: tokenCredKey,
+			Token:  consumer_key,
+			Secret: consumer_secret,
 		},
 	}
 }
